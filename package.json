@@ -1,0 +1,59 @@
+{
+  "name": "floating-label-react",
+  "version": "0.1.0",
+  "description": "A floating-label component using react without any dependencies",
+  "main": "dist/floating-label-react.js",
+  "jsnext:main": "dist/floating-label-react.es.js",
+  "module": "dist/floating-label-react.es.js",
+  "scripts": {
+    "build": "npm run build:browser && npm run build:module",
+    "build:browser": "babel index.js --out-file dist/floating-label-react.js",
+    "build:module": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "floating-label",
+    "react",
+    "styled-jsx"
+  ],
+  "author": "Mike Engel <mike@mike-engel.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.6",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "rollup": "^0.43.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-inject": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-resolve": "0.0.1-predev.1"
+  },
+  "peerDependencies": {
+    "react": ">= 15.x <= 16.x",
+    "prop-types": ">= 15.x <= 16.x"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "loose": true
+        }
+      ],
+      "react"
+    ],
+    "plugins": [
+      "add-module-exports",
+      "transform-class-properties"
+    ]
+  }
+}
