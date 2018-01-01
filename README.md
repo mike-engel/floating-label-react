@@ -24,10 +24,10 @@ yarn add floating-label-react
 import FloatingLabel from 'floating-label-react'
 
 <FloatingLabel
-  id="email"
-  name="email"
-  placeholder="Your email"
-  type="email"
+  id='email'
+  name='email'
+  placeholder='Your email'
+  type='email'
 />
 ```
 
@@ -37,11 +37,11 @@ If you'd like a textarea instead, use the `element` prop.
 import FloatingLabel from 'floating-label-react'
 
 <FloatingLabel
-  id="email"
-  element="textarea"
-  name="email"
-  placeholder="Your email"
-  type="email"
+  id='email'
+  element='textarea'
+  name='email'
+  placeholder='Your email'
+  type='email'
 />
 ```
 
@@ -53,32 +53,36 @@ import FloatingLabel, {
   focusStyles,
   inputStyles,
   labelStyles
-} from "./floating-label";
+} from 'floating-label-react'
 
 const inputStyle = {
-  floating: Object.assign({}, floatingStyles, {
-    color: blue
-  }),
-  focus: Object.assign({}, focusStyles, {
-    borderColor: blue
-  }),
-  input: Object.assign({}, inputStyles, {
+  floating: {
+    ...floatingStyles,
+    color: 'blue'
+  },
+  focus: {
+    ...focusStyles,
+    borderColor: 'blue'
+  },
+  input: {
+    ...inputStyles,
     borderBottomWidth: 2,
-    borderBottomColor: black,
-    width: "100%"
-  }),
-  label: Object.assign({}, labelStyles, {
-    marginTop: "0.5em",
-    width: "100%"
-  })
-};
+    borderBottomColor: 'black',
+    width: '100%'
+  },
+  label: {
+    ...labelStyles,
+    marginTop: '.5em',
+    width: '100%'
+  }
+}
 
 <FloatingLabel
-  id="email"
-  name="email"
-  placeholder="Your email"
+  id='email'
+  name='email'
+  placeholder='Your email'
   styles={inputStyle}
-  type="email"
+  type='email'
 />
 ```
 
