@@ -1,6 +1,6 @@
 {
   "name": "floating-label-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A floating-label component using react without any dependencies",
   "main": "dist/floating-label-react.js",
   "jsnext:main": "dist/floating-label-react.es.js",
@@ -55,5 +55,13 @@
       "add-module-exports",
       "transform-class-properties"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mike-engel/floating-label-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mike-engel/floating-label-react/issues"
+  },
+  "homepage": "https://github.com/mike-engel/floating-label-react#readme"
 }
