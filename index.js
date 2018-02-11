@@ -76,17 +76,19 @@ class FloatingLabel extends React.Component {
     const { styles } = this.props;
     const floating = this.isFloating(value, focused);
     const Node = this.props.element;
-    const floatingStyle = floating && (styles.floating || floatingStyles);
-    const focusStyle = focused && (styles.focus || focusStyles);
-    const labelStyle = Object.assign({}, styles.label, labelStyles);
+    const floatingStyle = floating && Object.assign({}, floatingStyles, styles.floating);
+    const focusStyle = focused && Object.assign({}, focusStyles, styles.focus);
+    const labelStyle = Object.assign({}, labelStyles, styles.label);
     const spanStyle = Object.assign(
       {},
-      styles.span || spanStyles,
+      spanStyles,
+      styles.span,
       floatingStyle
     );
     const inputStyle = Object.assign(
       {},
-      styles.input || inputStyles,
+      inputStyles,
+      styles.input,
       focusStyle
     );
 
@@ -155,9 +157,9 @@ FloatingLabel.defaultProps = {
   disabled: false,
   element: "input",
   name: "",
-  onBlur: () => {},
-  onChange: () => {},
-  onFocus: () => {},
+  onBlur: () => { },
+  onChange: () => { },
+  onFocus: () => { },
   placeholder: "",
   readOnly: false,
   required: false,
