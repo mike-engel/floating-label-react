@@ -28,14 +28,6 @@ export default {
       }
     },
     resolve(),
-    cjs({
-      namedExports: {
-        'node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.to-string.js': ['default'],
-        'node_modules/core-js/library/modules/es6.object.to-string.js': ['default']
-      }
-    }),
-    replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
-    inject({ process: processShim }),
     babel({
       babelrc: false,
       presets: [["env", { modules: false, loose: true }], "react"],
@@ -44,7 +36,15 @@ export default {
         "external-helpers",
         "transform-class-properties"
       ]
-    })
+    }),
+    cjs({
+      namedExports: {
+        'node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.to-string.js': ['default'],
+        'node_modules/core-js/library/modules/es6.object.to-string.js': ['default']
+      }
+    }),
+    replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
+    inject({ process: processShim }),
   ],
   globals: { react: "React" }
 };
