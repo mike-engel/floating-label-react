@@ -119,6 +119,7 @@ class FloatingLabel extends React.Component {
           step={this.props.step}
           style={inputStyle}
           type={this.props.type}
+          disabled={this.props.disabled}
         />
       </label>
     );
