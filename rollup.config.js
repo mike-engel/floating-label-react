@@ -7,11 +7,15 @@ import resolve from "rollup-plugin-node-resolve";
 const processShim = "\0process-shim";
 
 export default {
-  entry: "index.js",
-  moduleName: "floating-label-react",
-  exports: "named",
+  output: {
+    name: "floating-label-react",
+    globals: { react: "React" },
+    file: "dist/floating-label-react.es.js",
+    format: "es",
+    exports: "named"
+  },
+  input: "index.js",
   external: ["react", "prop-types", "styled-jsx"],
-  targets: [{ dest: "dist/floating-label-react.es.js", format: "es" }],
   plugins: [
     // Unlike Webpack and Browserify, Rollup doesn't automatically shim Node
     // builtins like `process`. This ad-hoc plugin creates a 'virtual module'
@@ -39,12 +43,15 @@ export default {
     }),
     cjs({
       namedExports: {
-        'node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.to-string.js': ['default'],
-        'node_modules/core-js/library/modules/es6.object.to-string.js': ['default']
+        "node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.to-string.js": [
+          "default"
+        ],
+        "node_modules/core-js/library/modules/es6.object.to-string.js": [
+          "default"
+        ]
       }
     }),
     replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
-    inject({ process: processShim }),
-  ],
-  globals: { react: "React" }
+    inject({ process: processShim })
+  ]
 };
