@@ -2,6 +2,11 @@
 Thumbs.db
 
 node_modules
+.rpt2_cache
 
 *.orig
 *.log
+
+index.tsx
+rollup.config.js
+tsconfig.json

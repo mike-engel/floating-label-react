@@ -1,0 +1,54 @@
+.floating-label {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding-top: 5px;
+  position: relative;
+}
+
+.floating-label + .floating-label {
+  margin-top: 0.5em;
+}
+
+.floating-label input,
+.floating-label textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1rem;
+  padding: 12px 0 8px 0;
+}
+
+.floating-label input:focus,
+.floating-label textarea:focus {
+  border-color: blue;
+}
+
+.floating-label input:focus + span,
+.floating-label textarea:focus + span,
+.floating-label.floating span {
+  font-size: 0.625rem;
+  padding: 0;
+}
+
+.floating-label input:focus:not(:focus-visible),
+.floating-label textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.floating-label span {
+  box-sizing: border-box;
+  font-size: 1rem;
+  left: 0;
+  padding: 14px 0 13px 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: font-size 200ms, padding 200ms;
+  z-index: 1;
+}

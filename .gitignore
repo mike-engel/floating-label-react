@@ -3,6 +3,7 @@ Thumbs.db
 
 node_modules
 dist
+.rpt2_cache
 
 *.orig
 *.log

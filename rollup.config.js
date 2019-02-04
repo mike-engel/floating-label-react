@@ -1,57 +1,29 @@
-import babel from "rollup-plugin-babel";
-import cjs from "rollup-plugin-commonjs";
-import inject from "rollup-plugin-inject";
+import typescript from "rollup-plugin-typescript2";
 import replace from "rollup-plugin-replace";
-import resolve from "rollup-plugin-node-resolve";
-
-const processShim = "\0process-shim";
+import pkg from "./package.json";
 
 export default {
-  output: {
-    name: "floating-label-react",
-    globals: { react: "React" },
-    file: "dist/floating-label-react.es.js",
-    format: "es",
-    exports: "named"
-  },
-  input: "index.js",
-  external: ["react", "prop-types", "styled-jsx"],
-  plugins: [
-    // Unlike Webpack and Browserify, Rollup doesn't automatically shim Node
-    // builtins like `process`. This ad-hoc plugin creates a 'virtual module'
-    // which includes a shim containing just the parts the bundle needs.
-    // Taken from the styled-components rollup config
+  input: "index.tsx",
+  output: [
     {
-      resolveId(importee) {
-        if (importee === processShim) return importee;
-        return null;
-      },
-      load(id) {
-        if (id === processShim) return "export default { argv: [], env: {} }";
-        return null;
-      }
+      file: pkg.main,
+      format: "cjs",
+      globals: { react: "React" }
     },
-    resolve(),
-    babel({
-      babelrc: false,
-      presets: [["env", { modules: false, loose: true }], "react"],
-      plugins: [
-        "transform-react-remove-prop-types",
-        "external-helpers",
-        "transform-class-properties"
-      ]
+    {
+      file: pkg.module,
+      format: "es",
+      globals: { react: "React" }
+    }
+  ],
+  external: ["react"],
+  plugins: [
+    replace({
+      // The react sources include a reference to process.env.NODE_ENV so we need to replace it here with the actual value
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
     }),
-    cjs({
-      namedExports: {
-        "node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.to-string.js": [
-          "default"
-        ],
-        "node_modules/core-js/library/modules/es6.object.to-string.js": [
-          "default"
-        ]
-      }
-    }),
-    replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
-    inject({ process: processShim })
+    typescript({
+      typescript: require("typescript")
+    })
   ]
 };
