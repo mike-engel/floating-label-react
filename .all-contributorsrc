@@ -26,6 +26,15 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "bifot",
+      "name": "Mikhail Semin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5220114?v=4",
+      "profile": "https://semin.me",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
