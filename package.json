@@ -1,6 +1,6 @@
 {
   "name": "floating-label-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A floating-label component using react without any dependencies",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.es.js",
